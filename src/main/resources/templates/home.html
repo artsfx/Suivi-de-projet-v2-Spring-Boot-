@@ -114,13 +114,13 @@
 					<tr>
 						<th scope="col" colspan="4">
 							<!-- Add new project -->
-							<button type="button" class="btn btn-primary" data-toggle="modal"
+<!-- 							<button type="button" class="btn btn-primary" data-toggle="modal"
 								th:attr="data-target='#addProjectModal'+${tempTeam.id}">Add
-								New Project</button>
+								New Project</button> -->
 
-<!-- <!-- 							<a th:href="@{/showFormNewProject(teamId=${tempTeam.id})}" class="btn btn-primary" 
+ 							<a th:href="@{/showFormNewProject(teamId=${tempTeam.id})}" class="btn btn-primary" 
 								role="button">Add New Project</a>
-								 --> 
+							
 							<div class="modal fade"
 								th:attr="id='addProjectModal'+${tempTeam.id}" tabindex="-1"
 								role="dialog">
@@ -169,12 +169,12 @@
 				</thead>
 				<tbody>
 					<tr th:each="project : ${tempTeam.projects}">
-						<td><span th:text="${project.projectName}"></span> <a
-							th:href="@{/showFormForUpdateProject(projectId=${project.id})}">Modify</a>
+						<td><span th:text="${project.projectName}"></span> 
+						<a th:href="@{/showFormForUpdateProject(projectId=${project.id})}">Modify</a>
 							| <a href="#" data-toggle="modal"
 							th:attr="data-target='#deleteProjectModal'+${project.id}">Delete</a>|
-							<a href="#" data-toggle="modal"
-							th:attr="data-target='#addTaskModal'+${project.id}">Add task</a>
+							<a th:href="@{/showFormNewTask(projectId=${project.id})}" 
+							>Add task</a>
 
 							<!-- Delete Project Modal -->
 							<form th:action="@{/deleteProject(projectId=${project.id})}"

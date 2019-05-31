@@ -93,8 +93,18 @@ public class ScrumAppController {
 		
 		System.out.println("Team id is :" + teamId);
 		theModel.addAttribute("project", new Project());
-		
+		theModel.addAttribute("teamId", teamId);
 		return "form-new-project";
+	}
+	
+	@GetMapping("showFormNewTask")
+	public String showFormNewTask(Model theModel, @RequestParam("projectId") int projectId) {
+		
+		//System.out.println("Team id is :" + teamId);
+		theModel.addAttribute("task", new Task());
+		theModel.addAttribute("projectId", projectId);
+		
+		return "form-new-task";
 	}
 	
 	@GetMapping("/login")
@@ -156,7 +166,7 @@ public class ScrumAppController {
 		if (bindingResult.hasErrors()) {
 			System.out.println("=======================>"+bindingResult);
 
-			return "form-project-update";
+			return "form-new-project";
 		}
 		
 		Optional<Team> optionalTeam = teamRepository.findById(teamId);
@@ -179,7 +189,7 @@ public class ScrumAppController {
 		if (bindingResult.hasErrors()) {
 			System.out.println("=======================>"+bindingResult);
 
-			return "form-task-update";
+			return "form-new-task";
 		}
 		
 		Optional<Project> optionalProject = projectRepository.findById(projectId);
